@@ -3,7 +3,7 @@ import Box from '@mui/material/TextField';
 import TextField from "@mui/material/TextField";
 import '../../styles/input.css';
 
-export default function Input({name, value, setValue, type, label, placeholder, required, error, helperText}) {
+export default function Input({value, setValue, type, label, placeholder, required, error, helperText}) {
   return (
     <Box
       component="form"
