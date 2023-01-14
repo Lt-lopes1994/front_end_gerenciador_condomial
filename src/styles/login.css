@@ -1,0 +1,116 @@
+.containerLogin {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginLeft {
+  background-image: url("../assets/fundo_login.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  width: 40%;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.loginLeftList{
+  display: flex;
+  flex-direction: row;
+  font-size: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.loginLeftListFirst .loginLeftListSecond{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  font-family: "Roboto", sans-serif;
+}
+
+li{
+  list-style: none;
+}
+
+.loginLeftContent {
+  width: 460px;
+  height: 93px;
+
+  color: #000000;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+
+  margin-top: 15rem;
+}
+
+.loginLeft h3, p{
+  margin-bottom: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.loginLeft p{
+  font-size: 1.9rem;
+}
+
+.loginRight {
+  width: 60%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginRight span {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.loginRight a {
+  color: #0e0e0e;
+
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+
+  margin-left: 0.5rem;
+  text-decoration: none;
+}
+
+.loginRight a:visited {
+  color: #1f12d3;
+}
+
+
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 1rem;
+}
+
+.loginForm label {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem;
+}
