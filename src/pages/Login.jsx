@@ -1,17 +1,27 @@
-import { Link } from 'react-router-dom';
-import  TextInput  from '../components/Input/input';
-import ButtonSample  from '../components/Button/button';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import ButtonSample from '../components/Button/button';
+import TextInput from '../components/Input/input';
 import '../styles/login.css';
 
 export default function Login() {
+  const navigate = useNavigate();
+  const [values, setValues] = useState();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate('/home');
+  };
+
   return (
     <div className='containerLogin'>
-      <div className='loginLeft'> 
+      <div className='loginLeft'>
         <div className='loginLeftContent'>
           <h3>Gerencie seu condominío de maneira simples, rápida e intuitiva!</h3>
-          <p>Com o Condomínio Online você tem acesso a todas as informações do seu condomínio, como: </p>
+          <p>
+            Com o Condomínio Online você tem acesso a todas as informações do seu condomínio, como:{' '}
+          </p>
           <div className='loginLeftList'>
-            
             <ul className='loginLeftListFirst'>
               <li>Controle de acesso</li>
               <li>Controle de pagamentos</li>
@@ -41,18 +51,16 @@ export default function Login() {
         </div>
       </div>
 
-      <div className='loginRight' >
-        <form className='loginForm'>
+      <div className='loginRight'>
+        <form className='loginForm' onSubmit={handleSubmit}>
           <h3>Entrar</h3>
-          <TextInput id="outlined-required" label="E-mail" type='text' />
-          <TextInput id="outlined-password-input" label="Senha" type="password" />
+          <TextInput id='outlined-required' label='E-mail' type='text' />
+          <TextInput id='outlined-password-input' label='Senha' type='password' />
           <span className='loginForgot'>
             Esqueceu a senha?
-            <Link to="/"> 
-            Clique aqui!
-            </Link> 
-            </span>
-            <ButtonSample name='Entrar' type='submit' />
+            <Link to='/'>Clique aqui!</Link>
+          </span>
+          <ButtonSample name='Entrar' type='submit' />
         </form>
       </div>
     </div>
