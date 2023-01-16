@@ -1,0 +1,22 @@
+.header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #5f9ea0;
+  height: 6rem;
+
+  border-bottom: 1px solid red; 
+}
+
+.headerContent{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+
+  color: #000000;
+
+  font-family: 'Roboto', sans-serif;
+}

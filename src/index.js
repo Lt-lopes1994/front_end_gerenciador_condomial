@@ -14,7 +14,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-       <MainRoutes />
+        <MainRoutes />
       </BrowserRouter>
     </Provider>
   </React.StrictMode>
