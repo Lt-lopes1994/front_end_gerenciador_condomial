@@ -22,17 +22,16 @@
         "import"
     ],
     "rules": {
+        "import/prefer-default-export": "off",
+        "react/prop-types": "off",
         "pascalcase": "off",
         "no-undef": "warn",
         "no-unused-vars": "warn",
         "no-console": "warn",
-        "format": [
-            "error",
-            "prettier"
-        ],
         "prettier/prettier": [
             "error"
         ],
+        "react/react-in-jsx-scope": "off",
         "react/jsx-filename-extension": [
             1,
             {
