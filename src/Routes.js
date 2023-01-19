@@ -2,10 +2,10 @@ import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 
-const ProtectedRoutes = ({ redirectTo }) => {
+function ProtectedRoutes({ redirectTo }) {
   const token = localStorage.getItem('token');
   return token ? <Outlet /> : <Navigate to={redirectTo} />;
-};
+}
 
 export default function MainRoutes() {
   return (
