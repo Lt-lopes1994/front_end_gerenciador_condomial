@@ -22,6 +22,13 @@
         "import"
     ],
     "rules": {
+        "no-promise-executor-return": "off",
+        "react/jsx-no-undef": "off",
+        "react/button-has-type": "off",
+        "consistent-return": "off",
+        "no-param-reassign": "off",
+        "react/jsx-curly-brace-presence": "warn",
+        "react/function-component-definition": "off",
         "import/prefer-default-export": "off",
         "react/prop-types": "off",
         "pascalcase": "off",
