@@ -1,0 +1,100 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.contentLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+  background: url("https://images.unsplash.com/photo-1491492722340-bb67f4b03602?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80")
+    center/cover no-repeat;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  box-shadow: 1px 1px 5px #969595;
+}
+
+.contentLeft h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.contentLeft p {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.contentLeft button {
+  all: unset;
+  width: 30rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: 0.3s;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+.contentLeft button:hover {
+  background-color: #ccc;
+  transform: scale(1.1);
+}
+
+.contentRight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+
+.contentRight h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.contentRight p {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.contentRight form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 1rem;
+}
+
+.contentRight form input {
+  width: 30rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.contentRight form button {
+  all: unset;
+  width: 20rem;
+  background-color: #4ed134;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: 0.3s;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+.contentRight form button:hover {
+  background-color: #3cb62c;
+  transform: scale(1.1);
+}
