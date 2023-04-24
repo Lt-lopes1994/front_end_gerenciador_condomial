@@ -1,8 +1,8 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import ButtonSample from '../components/Button/button';
-import TextInput from '../components/Input/input';
-import '../styles/login.css';
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import ButtonSample from "../components/Button/button.jsx";
+import TextInput from "../components/Input/input.jsx";
+import "../styles/login.css";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -10,19 +10,22 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate('/home');
+    navigate("/home");
   };
 
   return (
-    <div className='containerLogin'>
-      <div className='loginLeft'>
-        <div className='loginLeftContent'>
-          <h3>Gerencie seu condominío de maneira simples, rápida e intuitiva!</h3>
+    <div className="containerLogin">
+      <div className="loginLeft">
+        <div className="loginLeftContent">
+          <h3>
+            Gerencie seu condominío de maneira simples, rápida e intuitiva!
+          </h3>
           <p>
-            Com o Condomínio Online você tem acesso a todas as informações do seu condomínio, como:{' '}
+            Com o Condomínio Online você tem acesso a todas as informações do
+            seu condomínio, como:{" "}
           </p>
-          <div className='loginLeftList'>
-            <ul className='loginLeftListFirst'>
+          <div className="loginLeftList">
+            <ul className="loginLeftListFirst">
               <li>Controle de acesso</li>
               <li>Controle de pagamentos</li>
               <li>Controle de visitantes</li>
@@ -35,7 +38,7 @@ export default function Login() {
               <li>Controle de documentos</li>
             </ul>
 
-            <ul className='loginLeftListSecond'>
+            <ul className="loginLeftListSecond">
               <li>Controle de reservas</li>
               <li>Controle de ocorrências</li>
               <li>Controle de reuniões</li>
@@ -51,16 +54,20 @@ export default function Login() {
         </div>
       </div>
 
-      <div className='loginRight'>
-        <form className='loginForm' onSubmit={handleSubmit}>
+      <div className="loginRight">
+        <form className="loginForm" onSubmit={handleSubmit}>
           <h3>Entrar</h3>
-          <TextInput id='outlined-required' label='E-mail' type='text' />
-          <TextInput id='outlined-password-input' label='Senha' type='password' />
-          <span className='loginForgot'>
+          <TextInput id="outlined-required" label="E-mail" type="text" />
+          <TextInput
+            id="outlined-password-input"
+            label="Senha"
+            type="password"
+          />
+          <span className="loginForgot">
             Esqueceu a senha?
-            <Link to='/'>Clique aqui!</Link>
+            <Link to="/">Clique aqui!</Link>
           </span>
-          <ButtonSample name='Entrar' type='submit' />
+          <ButtonSample name="Entrar" type="submit" />
         </form>
       </div>
     </div>

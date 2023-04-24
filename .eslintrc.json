@@ -1,63 +1,44 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
-    },
-    "extends": [
-        "plugin:react/recommended",
-        "airbnb",
-        "plugin:prettier/recommended"
-    ],
-    "overrides": [
-    ],
-    "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react",
-        "prettier",
-        "react-hooks",
-        "jsx-a11y",
-        "import"
-    ],
-    "rules": {
-        "no-promise-executor-return": "off",
-        "react/jsx-no-undef": "off",
-        "react/button-has-type": "off",
-        "consistent-return": "off",
-        "no-param-reassign": "off",
-        "react/jsx-curly-brace-presence": "off",
-        "react/function-component-definition": "off",
-        "import/prefer-default-export": "off",
-        "react/prop-types": "off",
-        "pascalcase": "off",
-        "no-undef": "off",
-        "no-unused-vars": "warn",
-        "no-console": "warn",
-        "prettier/prettier": [
-            "error"
-        ],
-        "react/react-in-jsx-scope": "off",
-        "react/jsx-filename-extension": [
-            1,
-            {
-                "extensions": [
-                    ".js",
-                    ".jsx"
-                ]
-            }
-        ],
-        "jsx-quotes": [
-            "error",
-            "prefer-single"
-        ],
-        "react/self-closing-comp": [
-            "error",
-            {
-                "component": true,
-                "html": true
-            }
-        ]
+  "extends": [
+    "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "react/prop-types": "off",
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/self-closing-comp": "warn",
+    "react/jsx-no-undef": "warn",
+    "react/jsx-uses-vars": "warn",
+    "react/jsx-no-duplicate-props": "warn",
+    "react/jsx-no-target-blank": "warn",
+    "react/jsx-no-comment-textnodes": "warn",
+    "no-unused-vars": "warn"
+  },
+  "plugins": [
+    "react",
+    "import",
+    "jsx-a11y"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
     }
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "jest": true,
+    "node": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
 }

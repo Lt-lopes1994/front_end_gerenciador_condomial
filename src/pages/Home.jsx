@@ -1,14 +1,14 @@
-import Header from '../components/Header';
-import CardHome from '../components/CardsHome';
+import Header from "../components/Header/index.jsx";
+import CardHome from "../components/CardsHome/index.jsx";
 
 export default function Home() {
   return (
-    <div className='containerHome'>
-      <div className='containerHomeContent'>
+    <div className="containerHome">
+      <div className="containerHomeContent">
         <header>
-          <Header condominiumName={'Residencial Canadá'} />
+          <Header condominiumName={"Residencial Canadá"} />
         </header>
-        <div className='containerHomeCards'>
+        <div className="containerHomeCards">
           <CardHome />
         </div>
       </div>
