@@ -15,8 +15,34 @@
   color: #fff;
 }
 
-
 .buttonBase:hover {
   background: #2e7a1b;
+  transform: scale(1.05);
+}
+
+.btnBills {
+  width: 16rem;
+  height: 3.3rem;
+  margin-top: 4.6rem;
+  margin-bottom: 1.9rem;
+
+  background: #285bb9;
+  border-radius: 1rem;
+
+  border: none;
+
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  color: #fff;
+}
+
+.btnBills:hover {
+  background: #1e4a9c;
+  transform: scale(1.05);
+}
+
+.btnBills:active {
+  background: #1e4a9c;
   transform: scale(1.05);
 }

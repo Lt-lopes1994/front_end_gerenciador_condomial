@@ -1,0 +1,24 @@
+.reserved {
+  color: #ff6347;
+}
+
+.reserved:hover {
+  color: #cc3419;
+  transform: scale(0.5);
+  transition: ease-in-out 0.5s;
+}
+
+.available {
+  color: #00ff00;
+}
+
+.available:hover {
+  color: #00cc00;
+  transform: scale(1.1);
+  transition: ease-in-out 0.5s;
+}
+
+.pastDate {
+  color: #ebdada;
+  display: disabled;
+}

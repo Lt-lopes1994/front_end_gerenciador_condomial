@@ -1,9 +1,9 @@
-import * as React from "react";
+import { CardActionArea } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Button, CardActionArea, CardActions } from "@mui/material";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function ActionAreaCard({
@@ -13,34 +13,32 @@ export default function ActionAreaCard({
   description,
   link
 }) {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
   const navigate = useNavigate();
+
   const handleClick = () => {
     navigate(link);
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345 }} onClick={() => handleClick()}>
       <CardActionArea>
         <CardMedia component="img" height="140" image={image} alt={alt} />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {title}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography
+            variant="body1"
+            color="text.secondary"
+            style={{ fontSize: "1.5rem" }}
+          >
             {description}
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Button
-          size="medium"
-          color="primary"
-          sx={{ fontSize: "1.3rem" }}
-          onClick={() => handleClick()}
-        >
-          Ver mais
-        </Button>
-      </CardActions>
     </Card>
   );
 }
