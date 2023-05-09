@@ -1,7 +1,6 @@
 import Header from "../components/Header";
-import InfosCard from "../components/Card";
+import InfosCard from "../components/CardCommonAreas";
 import "../styles/commonAreas.css";
-import Calendar from "../components/ReservationCalendar";
 
 function CommonAreas() {
   return (
@@ -32,7 +31,6 @@ function CommonAreas() {
                 description={
                   "Veja aqui a disponibilidade da quadra de esportes e faça a sua reserva"
                 }
-                link={"/areas-comuns"}
               />
               <InfosCard
                 image={
@@ -43,10 +41,8 @@ function CommonAreas() {
                 description={
                   "Veja aqui a disponibilidade do salão de festas e faça a sua reserva"
                 }
-                link={"/areas-comuns"}
               />
             </div>
-            <Calendar />
           </div>
         </div>
       </section>

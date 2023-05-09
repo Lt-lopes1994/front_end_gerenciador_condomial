@@ -1,4 +1,6 @@
 .modalCalendar {
+  display: flex;
+  flex-direction: column;
   position: absolute;
   top: 0;
   left: 0;
@@ -10,6 +12,35 @@
   justify-content: center;
   align-items: center;
   /* display: none; */
+}
+
+.modalCalendarContent {
+  width: 90rem;
+  height: 50rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  background-color: #cececeb2;
+}
+
+.close {
+  all: unset;
+
+  position: absolute;
+  top: 18rem;
+  right: 42rem;
+  margin: 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #ff0000;
+  transform: scale(1.2);
+  ease: 0.5s;
 }
 
 .modalForm {

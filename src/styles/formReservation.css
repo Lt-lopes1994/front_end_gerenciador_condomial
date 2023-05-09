@@ -40,3 +40,9 @@ textarea {
   border-radius: 5px;
   border: 1px solid #ccc;
 }
+
+.alert {
+  color: #ff0019;
+  font-size: small;
+  margin-bottom: 1rem;
+}

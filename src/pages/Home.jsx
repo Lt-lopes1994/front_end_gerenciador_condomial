@@ -62,14 +62,15 @@ export default function Home() {
               link={"/areas-comuns"}
             />
             <InfosCard
-              alt={"Imagem do condomínio"}
+              alt={"Regulamento interno e reclamações"}
               description={
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatum, quibusdam, voluptates, quia voluptate quod exercitationem quos voluptatibus quas"
+                "Regulamento interno e reclamações. Veja aqui o regulamento interno do seu condomínio e faça reclamações de forma rápida e segura."
               }
               image={
-                "https://images.unsplash.com/photo-1679862342461-5017d30f4f52?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                "https://images.unsplash.com/photo-1508169351866-777fc0047ac5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
               }
-              title={"Residencial Canadá"}
+              title={"Regimento Interno e Reclamações"}
+              link={"/regimento-interno"}
             />
           </div>
         </section>

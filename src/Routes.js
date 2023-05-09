@@ -6,6 +6,7 @@ import News from './pages/News.jsx';
 import Bills from './pages/Bills.jsx';
 import CommonAreas from './pages/CommonAreas.jsx';
 import Test from './pages/Test.jsx';
+import RulesOfProcedure from './pages/RulesOfProcedure.jsx';
 
 // function ProtectedRoutes({ redirectTo }) {
 //   const token = localStorage.getItem('token');
@@ -22,6 +23,7 @@ export default function MainRoutes() {
       <Route path='/contas' element={<Bills />} />
       <Route path='/areas-comuns' element={<CommonAreas />} />
       <Route path='/teste' element={<Test />} />
+      <Route path='/regimento-interno' element={<RulesOfProcedure />} />
       <Route path='*' element={<h1>Not Found 404</h1>} />
     </Routes>
   );

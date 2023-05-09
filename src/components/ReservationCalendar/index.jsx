@@ -1,23 +1,54 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "../../styles/modalCalendar.css";
 import "../../styles/reservationCalendar.css";
-import { differenceInCalendarDays, format } from "date-fns";
+import { differenceInCalendarDays, format, set } from "date-fns";
 import FormReservation from "../FormReservation";
 import { ptBR } from "date-fns/locale";
 
-function ReservationCalendar() {
+function ReservationCalendar({
+  commonAreaName,
+  commonAreaId,
+  setOpenCalendar
+}) {
   const [value, onChange] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null); // State to store the selected date
+  const [open, setOpen] = useState(false); // State to control the modal
+  const [reservedDates, setReservedDates] = useState([]); // State to store the reserved dates
+  const [control, setControl] = useState(false);
 
-  const reservedDates = [
-    new Date(2023, 4, 13),
+  const reservedDatesFunctionHall = [
+    new Date(2023, 4, 10),
     new Date(2023, 4, 14),
     new Date(2023, 4, 20),
     new Date(2023, 5, 24),
     new Date(2023, 5, 25)
   ];
+
+  const reservedDatesSportsCourt = [
+    new Date(2023, 4, 11),
+    new Date(2023, 4, 12),
+    new Date(2023, 4, 20),
+    new Date(2023, 5, 15),
+    new Date(2023, 5, 30)
+  ];
+
+  function handleCommonAreaReservation(commonAreaName) {
+    console.log("chamou a função");
+    console.log(commonAreaName);
+
+    if (commonAreaName == "Salão de festas") {
+      setReservedDates(reservedDatesFunctionHall);
+    }
+    if (commonAreaName == "Quadra de esportes") {
+      setReservedDates(reservedDatesSportsCourt);
+    }
+  }
+
+  useEffect(() => {
+    handleCommonAreaReservation(commonAreaName);
+  }, []);
 
   function isSameDay(a, b) {
     return differenceInCalendarDays(a, b) === 0;
@@ -40,23 +71,39 @@ function ReservationCalendar() {
   }
 
   function handleDayClick(date) {
-    setSelectedDate(date); // Atualiza o estado com a data selecionada
-    console.log(selectedDate);
+    setSelectedDate(date); // update the selected date
+    setOpen(true); // open the reservation form modal
   }
+
+  function handleClose() {
+    setOpenCalendar(false); // Close the calendar modal
+  }
+
   return (
     <>
       <div className="modalCalendar">
-        <Calendar
-          onChange={onChange}
-          value={value}
-          tileDisabled={tileDisabled}
-          tileClassName={tileClassName}
-          onClickDay={handleDayClick} // Function to handle the click on the cell
-        />
+        <div className="modalCalendarContent">
+          <button className="close" onClick={handleClose}>
+            X
+          </button>
+          <h1>Selecione a data que deseja reservar</h1>
+          <h3>{commonAreaName}</h3>
+          <Calendar
+            onChange={onChange}
+            value={value}
+            tileDisabled={tileDisabled}
+            tileClassName={tileClassName}
+            onClickDay={handleDayClick} // Function to handle the click on the cell
+          />
+        </div>
       </div>
-      {selectedDate && (
+      {open && (
         <div className="modalForm">
-          <FormReservation selectedDate={selectedDate} />
+          <FormReservation
+            setOpen={setOpen}
+            selectedDate={selectedDate}
+            setSelectedDate={setSelectedDate}
+          />
         </div>
       )}
     </>
