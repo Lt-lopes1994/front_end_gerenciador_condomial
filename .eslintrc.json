@@ -16,7 +16,22 @@
     "react/jsx-no-duplicate-props": "warn",
     "react/jsx-no-target-blank": "warn",
     "react/jsx-no-comment-textnodes": "warn",
-    "no-unused-vars": "warn"
+    "no-unused-vars": "off",
+    "no-empty-pattern": "warn",
+    "import/named": "off",
+    "import/no-unresolved": "off",
+    "import/no-named-as-default": "off",
+    "import/no-named-as-default-member": "off",
+    "import/no-duplicates": "warn",
+    "import/no-useless-path-segments": "warn",
+    "import/no-deprecated": "warn",
+    "import/no-extraneous-dependencies": "warn",
+    "import/no-mutable-exports": "warn",
+    "import/no-commonjs": "warn",
+    "import/no-amd": "warn",
+    "import/first": "warn",
+    "import/exports-last": "warn",
+    "no-undef": "warn"
   },
   "plugins": [
     "react",

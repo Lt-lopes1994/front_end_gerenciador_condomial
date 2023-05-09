@@ -1,0 +1,46 @@
+.containerCharges {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.containerChargesContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.containerChargesCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  margin: 2rem 2rem;
+  height: fit-content;
+
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 1rem;
+  gap: 1rem;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+.containerChargesCardHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pieChart {
+  width: 50rem;
+  height: 50rem;
+}

@@ -4,8 +4,6 @@
   align-items: center;
   height: 100vh;
   width: 100%;
-  padding: 1rem;
-  margin: 1rem;
 }
 
 .containerHomeHero h1 {
@@ -25,7 +23,8 @@
 .containerHomeHeroCard {
   display: flex;
   flex-direction: row;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: 3rem;
 }
 
 .containerHomeHeroCard a {

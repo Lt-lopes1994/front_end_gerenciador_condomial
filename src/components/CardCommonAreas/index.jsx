@@ -4,24 +4,15 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Calendar from "../ReservationCalendar/index.jsx";
-import { set } from "date-fns";
 
-export default function ActionAreaCard({
-  image,
-  alt,
-  title,
-  description,
-  link
-}) {
+export default function ActionAreaCard({ image, alt, title, description }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
-  const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
 
   const handleClick = () => {
-    navigate(link);
+    setOpen(true);
   };
 
   return (
@@ -43,6 +34,13 @@ export default function ActionAreaCard({
           </CardContent>
         </CardActionArea>
       </Card>
+      {open && (
+        <Calendar
+          commonAreaId={""}
+          commonAreaName={title}
+          setOpenCalendar={setOpen}
+        />
+      )}
     </>
   );
 }

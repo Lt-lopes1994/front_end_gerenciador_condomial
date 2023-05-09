@@ -4,6 +4,10 @@ import InfosCard from "../components/Card/index.jsx";
 import "../styles/home.css";
 
 export default function Home() {
+  const handleClick = () => {
+    console.log("Clicou");
+  };
+
   return (
     <div className="containerHome">
       <div className="containerHomeContent">
@@ -25,45 +29,48 @@ export default function Home() {
           </div>
           <div className="containerHomeHeroCard">
             <InfosCard
-              alt={"Imagem do condomínio"}
+              alt={"Noticias do condomínio"}
               description={
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatum, quibusdam, voluptates, quia voluptate quod exercitationem quos voluptatibus quas"
+                "Veja as últimas notícias do condomínio e fique por dentro de tudo que acontece no seu lar."
               }
               image={
-                "https://images.unsplash.com/photo-1679862342461-5017d30f4f52?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                "https://images.unsplash.com/photo-1586339949916-3e9457bef6d3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
               }
-              title={"Residencial Canadá"}
-              link={"/condominium"}
+              title={"Notícias"}
+              link={"/noticias"}
+            />
+            <InfosCard
+              alt={"Codigo qr"}
+              description={
+                "Veja aqui os boletos do seu condomínio e faça o pagamento de forma rápida e segura. Veja também o histórico de inadimplência do seu condomínio."
+              }
+              image={
+                "https://images.unsplash.com/photo-1595079836278-25b7ad6d5ddb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+              }
+              title={"Boletos"}
+              link={"/contas"}
             />
             <InfosCard
               alt={"Imagem do condomínio"}
               description={
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatum, quibusdam, voluptates, quia voluptate quod exercitationem quos voluptatibus quas"
+                "Veja aqui as datas de reservas das áreas comuns do seu condomínio e faça a sua reserva de forma rápida e segura."
               }
               image={
-                "https://images.unsplash.com/photo-1679862342461-5017d30f4f52?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                "https://images.unsplash.com/photo-1502014822147-1aedfb0676e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
               }
-              title={"Residencial Canadá"}
+              title={"Areas Comuns"}
+              link={"/areas-comuns"}
             />
             <InfosCard
-              alt={"Imagem do condomínio"}
+              alt={"Regulamento interno e reclamações"}
               description={
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatum, quibusdam, voluptates, quia voluptate quod exercitationem quos voluptatibus quas"
+                "Regulamento interno e reclamações. Veja aqui o regulamento interno do seu condomínio e faça reclamações de forma rápida e segura."
               }
               image={
-                "https://images.unsplash.com/photo-1679862342461-5017d30f4f52?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                "https://images.unsplash.com/photo-1508169351866-777fc0047ac5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
               }
-              title={"Residencial Canadá"}
-            />
-            <InfosCard
-              alt={"Imagem do condomínio"}
-              description={
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatum, quibusdam, voluptates, quia voluptate quod exercitationem quos voluptatibus quas"
-              }
-              image={
-                "https://images.unsplash.com/photo-1679862342461-5017d30f4f52?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-              }
-              title={"Residencial Canadá"}
+              title={"Regimento Interno e Reclamações"}
+              link={"/regimento-interno"}
             />
           </div>
         </section>
