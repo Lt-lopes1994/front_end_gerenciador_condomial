@@ -3,14 +3,34 @@ import { useState } from "react";
 import ButtonSample from "../components/Button/button.jsx";
 import TextInput from "../components/Input/input.jsx";
 import "../styles/login.css";
+import api from "../services/api";
+import { useForm } from "react-hook-form";
 
 export default function Login() {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors }
+  } = useForm();
+  const [email, setEmail] = useState("");
   const navigate = useNavigate();
-  const [values, setValues] = useState();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    navigate("/home");
+  console.log(watch("email"));
+
+  const onSubmit = async (data) => {
+    try {
+      const sendData = {
+        username: data.email,
+        password: data.password
+      };
+
+      const response = await api.post("/users/login", sendData);
+      localStorage.setItem("token", response.data.access_token);
+      navigate("/home");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -55,13 +75,21 @@ export default function Login() {
       </div>
 
       <div className="loginRight">
-        <form className="loginForm" onSubmit={handleSubmit}>
+        <form className="loginForm" onSubmit={handleSubmit(onSubmit)}>
           <h3>Entrar</h3>
-          <TextInput id="outlined-required" label="E-mail" type="text" />
           <TextInput
+            name="email"
+            id="outlined-email-required"
+            label="E-mail"
+            type="text"
+            register={register}
+          />
+          <TextInput
+            name={"password"}
             id="outlined-password-input"
             label="Senha"
             type="password"
+            register={register}
           />
           <span className="loginForgot">
             Esqueceu a senha?
