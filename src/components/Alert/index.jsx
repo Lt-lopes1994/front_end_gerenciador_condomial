@@ -1,7 +1,16 @@
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 
-export default function BasicAlerts({ message, severity, open, setOpen }) {
+export default function BasicAlerts({
+  message,
+  severity,
+  open,
+  setOpen,
+  top,
+  bottom,
+  left,
+  right
+}) {
   setTimeout(() => {
     setOpen(false);
   }, 5000);
@@ -11,8 +20,10 @@ export default function BasicAlerts({ message, severity, open, setOpen }) {
       sx={{
         width: "30rem",
         position: "absolute",
-        top: "60rem",
-        bottom: "0"
+        top: { top },
+        bottom: { bottom },
+        left: { left },
+        right: { right }
       }}
       spacing={2}
     >

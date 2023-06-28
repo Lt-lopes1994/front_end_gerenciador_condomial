@@ -95,6 +95,10 @@ export default function Login() {
             Esqueceu a senha?
             <Link to="/">Clique aqui!</Link>
           </span>
+          <span className="loginForgot">
+            Novo no APP?
+            <Link to="/registro">Clique aqui!</Link>
+          </span>
           <ButtonSample name="Entrar" type="submit" />
         </form>
       </div>
