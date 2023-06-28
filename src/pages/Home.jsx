@@ -1,9 +1,17 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import Header from "../components/Header/index.jsx";
 import CardHome from "../components/CardsHome/index.jsx";
 import InfosCard from "../components/Card/index.jsx";
 import "../styles/home.css";
+import jwtDecode from "jwt-decode";
 
 export default function Home() {
+  const token = localStorage.getItem("token");
+
+  const decoded = jwtDecode(token);
+
+  const { name, role, tower, door, email } = decoded;
+
   const handleClick = () => {
     console.log("Clicou");
   };
@@ -12,7 +20,7 @@ export default function Home() {
     <div className="containerHome">
       <div className="containerHomeContent">
         <header>
-          <Header condominiumName={"Residencial Canadá"} />
+          <Header userName={name} />
         </header>
         <div className="containerHomeCards">
           <CardHome />
@@ -21,10 +29,8 @@ export default function Home() {
           <div className="containerHomeHeroContent">
             <h1>Residencial Canadá</h1>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-              voluptatum, quibusdam, voluptates, quia voluptate quod
-              exercitationem quos voluptatibus quas quibusdam, voluptates, quia
-              voluptate quod exercitationem quos voluptatibus quas
+              Seja bem vindo ao portal do seu condomínio. Confira abaixo as
+              principais informações do seu condomínio e da sua torre {tower}!
             </p>
           </div>
           <div className="containerHomeHeroCard">
