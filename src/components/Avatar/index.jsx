@@ -1,6 +1,6 @@
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
-import { deepOrange } from "@mui/material/colors";
+import { deepOrange, deepPurple } from "@mui/material/colors";
 import jwtDecode from "jwt-decode";
 
 export default function LetterAvatars({ handleOpen }) {
@@ -13,7 +13,7 @@ export default function LetterAvatars({ handleOpen }) {
   return (
     <Stack direction="row" spacing={2}>
       <Avatar
-        sx={{ bgcolor: deepOrange["900"], marginRight: "0.9rem" }}
+        sx={{ bgcolor: deepPurple["500"], marginRight: "0.9rem" }}
         // onClick={() => handleOpen()}
       >
         {letterAvatar}

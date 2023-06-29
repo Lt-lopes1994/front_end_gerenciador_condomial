@@ -20,7 +20,7 @@ export default function Home() {
     <div className="containerHome">
       <div className="containerHomeContent">
         <header>
-          <Header userName={name} />
+          <Header />
         </header>
         <div className="containerHomeCards">
           <CardHome />

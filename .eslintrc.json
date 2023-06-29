@@ -31,7 +31,8 @@
     "import/no-amd": "warn",
     "import/first": "warn",
     "import/exports-last": "warn",
-    "no-undef": "warn"
+    "no-undef": "warn",
+    "react/jsx-key": "warn"
   },
   "plugins": [
     "react",
