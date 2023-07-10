@@ -7,6 +7,7 @@ import Bills from './pages/Bills.jsx';
 import CommonAreas from './pages/CommonAreas.jsx';
 import Test from './pages/Test.jsx';
 import RulesOfProcedure from './pages/RulesOfProcedure.jsx';
+import RoleDistribution from './pages/RoleDistribution.jsx';
 
 // function ProtectedRoutes({ redirectTo }) {
 //   const token = localStorage.getItem('token');
@@ -24,6 +25,7 @@ export default function MainRoutes() {
       <Route path='/areas-comuns' element={<CommonAreas />} />
       <Route path='/teste' element={<Test />} />
       <Route path='/regimento-interno' element={<RulesOfProcedure />} />
+      <Route path='/permissoes' element={<RoleDistribution />} />
       <Route path='*' element={<h1>Not Found 404</h1>} />
     </Routes>
   );
