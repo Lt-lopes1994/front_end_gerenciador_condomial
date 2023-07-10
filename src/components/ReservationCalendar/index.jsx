@@ -19,19 +19,19 @@ function ReservationCalendar({
   const [control, setControl] = useState(false);
 
   const reservedDatesFunctionHall = [
-    new Date(2023, 4, 10),
-    new Date(2023, 4, 14),
-    new Date(2023, 4, 20),
-    new Date(2023, 5, 24),
-    new Date(2023, 5, 25)
+    new Date(2023, 8, 10),
+    new Date(2023, 8, 14),
+    new Date(2023, 8, 20),
+    new Date(2023, 7, 24),
+    new Date(2023, 7, 25)
   ];
 
   const reservedDatesSportsCourt = [
-    new Date(2023, 4, 11),
-    new Date(2023, 4, 12),
-    new Date(2023, 4, 20),
-    new Date(2023, 5, 15),
-    new Date(2023, 5, 30)
+    new Date(2023, 8, 11),
+    new Date(2023, 8, 12),
+    new Date(2023, 8, 20),
+    new Date(2023, 7, 15),
+    new Date(2023, 7, 30)
   ];
 
   function handleCommonAreaReservation(commonAreaName) {

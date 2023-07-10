@@ -25,12 +25,14 @@
 }
 
 .cardHomeTitle {
+  height: fit-content;
+
   font-size: 1.5rem;
   font-weight: 700;
   color: #000;
-  margin-bottom: 10px;
-  border-radius: 10px;
-  padding: 10px;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+  padding: 1.5rem;
   background-color: #faeeee;
   text-align: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);

@@ -90,3 +90,23 @@
   font-weight: 400;
   color: #ac0000;
 }
+
+.btnSend {
+  width: 10rem;
+  height: 2rem;
+  margin-top: 1rem;
+  background: #3624d4;
+  border-radius: 1rem;
+
+  border: none;
+
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  color: #fff;
+}
+
+.btnSend:hover {
+  background: #261b8a;
+  transform: scale(1.05);
+}
