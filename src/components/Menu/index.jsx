@@ -3,15 +3,28 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Avatar from "../Avatar/index.jsx";
+import { useNavigate } from "react-router-dom";
 
 export default function BasicMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const navigate = useNavigate();
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = () => {
+
+  const handleLogout = () => {
     setAnchorEl(null);
+
+    localStorage.clear();
+    navigate('/');
+  };
+
+  const handleOpenProfile = () => {
+    setAnchorEl(null);
+
+    navigate('/perfil');
   };
 
   return (
@@ -29,14 +42,13 @@ export default function BasicMenu() {
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
-        onClose={handleClose}
+        onClose={() => setAnchorEl(null)}
         MenuListProps={{
           "aria-labelledby": "basic-button"
         }}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem onClick={handleOpenProfile}>Profile</MenuItem>
+        <MenuItem onClick={handleLogout}>Logout</MenuItem>
       </Menu>
     </div>
   );
