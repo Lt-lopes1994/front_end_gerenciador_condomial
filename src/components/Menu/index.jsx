@@ -24,7 +24,7 @@ export default function BasicMenu() {
   const handleOpenProfile = () => {
     setAnchorEl(null);
 
-    navigate('/perfil');
+    navigate('/minha-conta');
   };
 
   return (
