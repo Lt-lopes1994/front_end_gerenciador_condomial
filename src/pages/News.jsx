@@ -1,5 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable react/jsx-key */
 import jwtDecode from "jwt-decode";
 import { useEffect, useState } from "react";
 import Header from "../components/Header/index.jsx";
@@ -10,9 +8,31 @@ function News() {
   const [news, setNews] = useState([]);
 
   async function getNews() {
-    const response = await api.get("/news");
-    console.log(response.data);
-    setNews(response.data);
+    try {
+      const response = await api.get("/news");
+      const news = response.data;
+      setNews(news);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function refreshAccessToken() {
+    try {
+      const refreshToken = localStorage.getItem("token");
+      const response = await api.put("/token/refresh", {
+        oldToken: refreshToken
+      });
+      const { access_token } = response.data;
+
+      // Atualizar o token de acesso no localStorage ou em algum estado global
+      localStorage.setItem("token", access_token);
+
+      // Atualizar o cabeçalho Authorization do Axios com o novo token de acesso
+      api.defaults.headers.common["Authorization"] = `Bearer ${access_token}`;
+    } catch (error) {
+      throw new Error("Erro ao renovar o token de acesso");
+    }
   }
 
   useEffect(() => {
@@ -37,7 +57,7 @@ function News() {
         <h1>Notícias</h1>
         <div className="newsCards">
           {news.map((news) => (
-            <div className="newsCard">
+            <div key={news._id} className="newsCard">
               <img src={news.ULRimage} alt={news.alt} />
               <div className="newsContent">
                 <h2>{news.title}</h2>

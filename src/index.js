@@ -8,12 +8,38 @@ import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import MainRoutes from './Routes';
 import './styles/index.css';
+import axios from 'axios';
+import api from './services/api';
 
 
 const container = document.getElementById('root');
 const root = createRoot(container);
 
+function defineInterceptor() {
+  axios.interceptors.request.use(response => {
+    return response;
+  }, err => {
+    return new Promise((resolve, reject) => {
+      const originalReq = err.config;
+      if (err.response.status === 401 && err.config && !err.config.__isRetryRequest) {
+        originalReq._retry = true;
+        api.post('/auth/refresh_token', {}, { withCredentials: true }).then(res => {
+          if (res.status === 200) {
+            console.log('refresh token');
+            localStorage.setItem('token', res.data.token);
+            api.defaults.headers.Authorization = `Bearer ${res.data.token}`;
+            return axios(originalReq);
+          }
+        }).catch(err => {
+          reject(err);
+        });
+      }
+    });
+  });
+}
+
 root.render(
+
   <React.StrictMode>
 
     <BrowserRouter>

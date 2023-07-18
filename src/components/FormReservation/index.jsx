@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import "../../styles/formReservation.css";
 
-function FormReservation({ selectedDate, setOpen }) {
+function FormReservation({ selectedDate, setOpen, commonAreaId }) {
   const {
     register,
     handleSubmit,
@@ -22,7 +22,12 @@ function FormReservation({ selectedDate, setOpen }) {
   const [date, setDate] = useState(selectedDate);
 
   const onSubmit = (data) => {
-    console.log("submit", data);
+    const sentData = {
+      ...data,
+      date: format(date, "dd/MM/yyyy", { locale: ptBR }),
+      commonAreaId
+    };
+    console.log("submit", sentData);
     setOpen(false);
   };
 
