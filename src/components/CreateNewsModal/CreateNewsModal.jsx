@@ -90,10 +90,10 @@ const CreateNewsModal = ({ show, handleClose, handleCreate, formData }) => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
+        <Button class="btn btn-outline-danger" onClick={handleClose}>
           Fechar
         </Button>
-        <Button variant="primary" onClick={handleSubmit}>
+        <Button class="btn btn-outline-success" onClick={handleSubmit}>
           Salvar Alterações
         </Button>
       </Modal.Footer>
