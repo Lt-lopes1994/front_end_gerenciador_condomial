@@ -55,7 +55,7 @@
   margin-top: 4.6rem;
   margin-bottom: 1.9rem;
 
-  background: #d40909;
+  background: #19b833;
   border-radius: 1rem;
 
   border: none;
@@ -63,17 +63,13 @@
   font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: 400;
-  color: #ac0000;
-}
-
-.newsButton a {
-  color: #fffcfc;
-  text-decoration: none;
+  color: #000000;
+  transition: transform 0.3s ease;
 }
 
 .newsButton:hover {
   background: #2e7a1b;
-  transform: scale(1.05);
+  transform: scale(0.9);
 }
 
 .deleteBtn {
@@ -90,12 +86,18 @@
   font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: 400;
-  color: #ac0000;
+  color: #fff;
+  transition: transform 0.3s ease;
+}
+
+.deleteBtn:hover {
+  background: #f11111;
+  transform: scale(0.9);
 }
 
 .btnSend {
   width: 10rem;
-  height: 2rem;
+  height: 4rem;
   margin-top: 1rem;
   background: #3624d4;
   border-radius: 1rem;
@@ -109,6 +111,28 @@
 }
 
 .btnSend:hover {
+  background: #261b8a;
+  transform: scale(1.05);
+}
+
+.btnEditNews {
+  width: 10rem;
+  height: 4rem;
+  margin-top: 1rem;
+  background: #3624d4;
+  border-radius: 1rem;
+
+  border: none;
+
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  color: #fff;
+
+  transition: transform 0.3s ease;
+}
+
+.btnEditNews:hover {
   background: #261b8a;
   transform: scale(1.05);
 }

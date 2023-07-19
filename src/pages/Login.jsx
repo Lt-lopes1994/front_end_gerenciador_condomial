@@ -1,10 +1,10 @@
-import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
 import ButtonSample from "../components/Button/button.jsx";
 import TextInput from "../components/Input/input.jsx";
-import "../styles/login.css";
 import api from "../services/api";
-import { useForm } from "react-hook-form";
+import "../styles/login.css";
 
 export default function Login() {
   const {
@@ -35,6 +35,34 @@ export default function Login() {
 
   return (
     <div className="containerLogin">
+      <div className="loginRight">
+        <form className="loginForm" onSubmit={handleSubmit(onSubmit)}>
+          <h3 className="title">Login</h3>
+          <label htmlFor="email" className="label-input ">Email</label>
+          <TextInput
+            name="email"
+            id="outlined-email-required"
+            label="E-mail"
+            type="text"
+            register={register}
+          />
+          <label htmlFor="password" className="label-input ">Password</label>
+          <TextInput
+            name={"password"}
+            id="outlined-password-input"
+            label="Senha"
+            type="password"
+            register={register}
+          />
+          <Link to="/esqueceusenha"><span className="loginForgot">
+            Esqueceu a senha?
+          </span></Link>
+          <Link to="/"><span className="loginForgot">
+            Novo no APP?
+          </span></Link>
+          <ButtonSample name="Entrar" type="submit" />
+        </form>
+      </div>
       <div className="loginLeft">
         <div className="loginLeftContent">
           <h3>
@@ -72,35 +100,6 @@ export default function Login() {
             </ul>
           </div>
         </div>
-      </div>
-
-      <div className="loginRight">
-        <form className="loginForm" onSubmit={handleSubmit(onSubmit)}>
-          <h3>Entrar</h3>
-          <TextInput
-            name="email"
-            id="outlined-email-required"
-            label="E-mail"
-            type="text"
-            register={register}
-          />
-          <TextInput
-            name={"password"}
-            id="outlined-password-input"
-            label="Senha"
-            type="password"
-            register={register}
-          />
-          <span className="loginForgot">
-            Esqueceu a senha?
-            <Link to="/">Clique aqui!</Link>
-          </span>
-          <span className="loginForgot">
-            Novo no APP?
-            <Link to="/registro">Clique aqui!</Link>
-          </span>
-          <ButtonSample name="Entrar" type="submit" />
-        </form>
       </div>
     </div>
   );

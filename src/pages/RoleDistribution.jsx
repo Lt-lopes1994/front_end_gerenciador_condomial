@@ -1,60 +1,44 @@
-import jwtDecode from "jwt-decode";
 import { useEffect, useState } from "react";
-import { Controller, useForm } from "react-hook-form";
-import Select from "react-select";
 import Header from "../components/Header";
 import api from "../services/api";
 import "../styles/roleDistribution.css";
 
 export default function RoleDistribution() {
-  const { control, handleSubmit, getValues, register } = useForm();
-  const [initialValues, setInitialValues] = useState({});
   const [users, setUsers] = useState([]);
 
-  async function submit(data) {
-    const changedFields = {};
-    let userId = null;
-
-    for (const fieldName in data) {
-      if (fieldName.startsWith("role-")) {
-        const id = fieldName.replace("role-", "");
-        const roleId = data[fieldName];
-        userId = data[`id-${id}`];
-        changedFields[userId] = roleId;
-      }
-    }
-
-    if (userId && Object.keys(changedFields).length > 0) {
-      const response = await api.patch(`/users/admin/${userId}`, changedFields);
-      console.log(response.data);
-      window.location.reload();
-    }
-  }
-
-  const options = [
-    { value: "admin", label: "admin" },
-    { value: "user", label: "user" }
-  ];
-
   async function getUsers() {
-    const response = await api.get("/users/listar");
-    console.log(response.data);
-    setUsers(response.data);
+    try {
+      const response = await api.get("/users/listar");
+      console.log(response.data);
+      setUsers(response.data);
+    } catch (error) {
+      console.log("Erro ao obter usuários:", error);
+    }
   }
 
   useEffect(() => {
     getUsers();
   }, []);
 
-  useEffect(() => {
-    if (users.length > 0) {
-      const initialValuesObj = {};
-      users.forEach((user) => {
-        initialValuesObj[`${user.id}`] = user.role;
-      });
-      setInitialValues(initialValuesObj);
+  const handleRoleChange = (userId, newRole) => {
+    const updatedUsers = users.map((user) =>
+      user.id === userId ? { ...user, role: newRole } : user
+    );
+    setUsers(updatedUsers);
+  };
+
+  const savePermissions = async () => {
+    try {
+      await Promise.all(
+        users.map((user) =>
+          api.patch(`/users/admin/${user.id}`, { role: user.role })
+        )
+      );
+      console.log("Permissões salvas com sucesso!");
+    } catch (error) {
+      console.log("Erro ao salvar permissões:", error);
     }
-  }, [users]);
+  };
 
   return (
     <>
@@ -62,7 +46,7 @@ export default function RoleDistribution() {
         <Header />
         <div className="containerTable">
           <div className="tableHeader">
-            <h1>Permissões dos Usuarios</h1>
+            <h1>Permissões dos Usuários</h1>
             <p>Altere as permissões dos usuários cadastrados no sistema:</p>
           </div>
           <table className="permissionUserTable">
@@ -80,33 +64,40 @@ export default function RoleDistribution() {
                   <td>{user.role}</td>
 
                   <td>
-                    <form onSubmit={handleSubmit(submit)}>
-                      <Controller
-                        name={`role-${user.id}`}
-                        control={control}
-                        defaultValue={user.role}
-                        render={({ field }) => (
-                          <Select {...field} options={options} />
-                        )}
-                      />
-
+                    <div className="slide-radio">
                       <input
-                        type="hidden"
-                        name={`id-${user.id}`}
-                        defaultValue={user.id}
-                        {...register(`id-${user.id}`)}
+                        type="radio"
+                        id={`admin-${user.id}`}
+                        name={`role-${user.id}`}
+                        value="admin"
+                        checked={user.role === "admin"}
+                        onChange={() => handleRoleChange(user.id, "admin")}
                       />
-
-                      <button className="btnSend" type="submit">
-                        Alterar
-                      </button>
-                    </form>
+                      <label htmlFor={`admin-${user.id}`}>Administrador</label>
+                      <input
+                        type="radio"
+                        id={`user-${user.id}`}
+                        name={`role-${user.id}`}
+                        value="user"
+                        checked={user.role === "user"}
+                        onChange={() => handleRoleChange(user.id, "user")}
+                      />
+                      <label htmlFor={`user-${user.id}`}>Usuário</label>
+                      <div className="slide" />
+                    </div>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
+        <button
+          style={{ position: "fixed", top: "90%", left: "90%" }}
+          className="btnSend"
+          onClick={savePermissions}
+        >
+          Salvar Permissões
+        </button>
       </>
     </>
   );
