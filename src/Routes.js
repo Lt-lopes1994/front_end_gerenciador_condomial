@@ -7,6 +7,7 @@ import Login from './pages/Login.jsx';
 import News from './pages/News.jsx';
 import Register from './pages/Register.jsx';
 import RoleDistribution from './pages/RoleDistribution.jsx';
+import Profile from './pages/Profile.jsx';
 import RulesOfProcedure from './pages/RulesOfProcedure.jsx';
 import Test from './pages/Test.jsx';
 
@@ -28,6 +29,7 @@ export default function MainRoutes() {
       <Route path='/teste' element={<Test />} />
       <Route path='/regimento-interno' element={<RulesOfProcedure />} />
       <Route path='/permissoes' element={<RoleDistribution />} />
+      <Route path='/minha-conta' element={<Profile />} />
       <Route path='*' element={<h1>Not Found 404</h1>} />
     </Routes>
   );

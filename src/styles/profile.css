@@ -1,0 +1,55 @@
+.containerProfile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100vw;
+    height: 100vh;
+}
+
+.formContainer {
+    margin-top: 100px;
+    /* width: 50%; */
+}
+
+.formContainer h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+
+    text-align: center;
+}
+
+.formContainer form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* width: 100%; */
+    gap: 1rem;
+}
+
+.formContainer form input {
+    width: 30rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.formContainer button {
+    all: unset;
+    width: 20rem;
+    background-color: #4ed134;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+.formContainer form button:hover {
+    background-color: #3cb62c;
+    transform: scale(1.1);
+}
