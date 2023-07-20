@@ -2,10 +2,17 @@ import jwtDecode from "jwt-decode";
 import React, { useState, useEffect } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 
-const CreateNewsModal = ({ show, handleClose, handleCreate, formData }) => {
+const CreateNewsModal = ({
+  show,
+  handleClose,
+  handleCreate,
+  handleEditNews,
+  formData
+}) => {
   const { id } = jwtDecode(localStorage.getItem("token"));
 
   const [formValues, setFormValues] = useState({
+    id: "",
     ULRimage: "",
     alt: "",
     title: "",
@@ -25,10 +32,12 @@ const CreateNewsModal = ({ show, handleClose, handleCreate, formData }) => {
       ...prevData,
       [name]: value
     }));
+    console.log(formValues);
   };
 
   const handleClearForm = () => {
     setFormValues({
+      id: "",
       ULRimage: "",
       alt: "",
       title: "",
@@ -38,6 +47,13 @@ const CreateNewsModal = ({ show, handleClose, handleCreate, formData }) => {
   };
 
   const handleSubmit = () => {
+    if (formData) {
+      handleEditNews(formValues);
+      handleClearForm();
+      handleClose();
+
+      return;
+    }
     handleCreate(formValues);
     handleClearForm();
     handleClose();
@@ -90,10 +106,10 @@ const CreateNewsModal = ({ show, handleClose, handleCreate, formData }) => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button class="btn btn-outline-danger" onClick={handleClose}>
+        <Button class="btn btn-danger" onClick={handleClose}>
           Fechar
         </Button>
-        <Button class="btn btn-outline-success" onClick={handleSubmit}>
+        <Button class="btn btn-success" onClick={handleSubmit}>
           Salvar Alterações
         </Button>
       </Modal.Footer>

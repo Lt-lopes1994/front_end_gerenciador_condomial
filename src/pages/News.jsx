@@ -20,26 +20,10 @@ export default function News() {
     }
   }
 
-  async function refreshAccessToken() {
-    try {
-      const refreshToken = localStorage.getItem("token");
-      const response = await api.put("/token/refresh", {
-        oldToken: refreshToken
-      });
-      const { access_token } = response.data;
-
-      // Atualizar o token de acesso no localStorage ou em algum estado global
-      localStorage.setItem("token", access_token);
-
-      // Atualizar o cabeçalho Authorization do Axios com o novo token de acesso
-      api.defaults.headers.common["Authorization"] = `Bearer ${access_token}`;
-    } catch (error) {
-      throw new Error("Erro ao renovar o token de acesso");
-    }
-  }
-
   useEffect(() => {
-    getNews();
+    setTimeout(() => {
+      getNews();
+    }, 1000);
   }, []);
 
   const { role } = jwtDecode(localStorage.getItem("token"));
@@ -61,12 +45,25 @@ export default function News() {
   // Função para fechar o modal
   const handleCloseModal = () => {
     setShowModal(false);
+    setEditNewsData(null);
   };
 
   // Função para criar a notícia
   const handleCreateNews = async (formData) => {
     try {
       await api.post("/news/criar", formData);
+
+      handleCloseModal();
+
+      getNews();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleEditNews = async (formData) => {
+    try {
+      await api.patch(`/news/editar/${formData._id}`, formData);
 
       handleCloseModal();
 
@@ -99,6 +96,7 @@ export default function News() {
         show={showModal}
         handleClose={handleCloseModal}
         handleCreate={handleCreateNews}
+        handleEditNews={handleEditNews}
         formData={editNewsData}
       />
 
@@ -110,7 +108,7 @@ export default function News() {
               <img src={news.ULRimage} alt={news.alt} />
               <div className="newsContent">
                 <h2>{news.title}</h2>
-                <p>{news.content.substring(0, 200).concat("...")}</p>
+                <p>{news.content}</p>
                 <p>
                   {role === "admin" ? (
                     <button
