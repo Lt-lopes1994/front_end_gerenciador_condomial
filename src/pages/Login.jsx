@@ -38,7 +38,9 @@ export default function Login() {
       <div className="loginRight">
         <form className="loginForm" onSubmit={handleSubmit(onSubmit)}>
           <h3 className="title">Login</h3>
-          <label htmlFor="email" className="label-input ">Email</label>
+          <label htmlFor="email" className="label-input ">
+            Email
+          </label>
           <TextInput
             name="email"
             id="outlined-email-required"
@@ -46,7 +48,9 @@ export default function Login() {
             type="text"
             register={register}
           />
-          <label htmlFor="password" className="label-input ">Password</label>
+          <label htmlFor="password" className="label-input ">
+            Password
+          </label>
           <TextInput
             name={"password"}
             id="outlined-password-input"
@@ -54,12 +58,12 @@ export default function Login() {
             type="password"
             register={register}
           />
-          <Link to="/esqueceusenha"><span className="loginForgot">
-            Esqueceu a senha?
-          </span></Link>
-          <Link to="/"><span className="loginForgot">
-            Novo no APP?
-          </span></Link>
+          <Link to="/esqueceusenha">
+            <span className="loginForgot">Esqueceu a senha?</span>
+          </Link>
+          <Link to="/registro">
+            <span className="loginForgot">Novo no APP?</span>
+          </Link>
           <ButtonSample name="Entrar" type="submit" />
         </form>
       </div>
