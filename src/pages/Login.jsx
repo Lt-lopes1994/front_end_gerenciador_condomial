@@ -57,7 +57,7 @@ export default function Login() {
           <Link to="/esqueceusenha"><span className="loginForgot">
             Esqueceu a senha?
           </span></Link>
-          <Link to="/"><span className="loginForgot">
+          <Link to="/registro"><span className="loginForgot">
             Novo no APP?
           </span></Link>
           <ButtonSample name="Entrar" type="submit" />
