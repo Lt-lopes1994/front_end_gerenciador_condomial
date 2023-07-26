@@ -25,7 +25,7 @@ export default function Login() {
         password: data.password
       };
 
-      const response = await api.post("/users/login", sendData);
+      const response = await api.post("/login", sendData);
       localStorage.setItem("token", response.data.access_token);
       navigate("/home");
     } catch (error) {

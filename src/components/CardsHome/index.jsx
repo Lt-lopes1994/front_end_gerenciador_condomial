@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import "../../styles/cardHome.css";
 import api from "../../services/api";
+import "../../styles/cardHome.css";
 
 export default function CardHome() {
   const [condominium, setCondominium] = useState([]);
@@ -9,6 +9,7 @@ export default function CardHome() {
     const response = await api.get("/condominio");
     console.log(response.data[0]);
     setCondominium(response.data[0]);
+    console.log(response);
   }
 
   useEffect(() => {
@@ -19,25 +20,25 @@ export default function CardHome() {
     <div className="cardHome">
       <div className="cardHomeContent">
         <div className="cardHomeTitle">
-          <strong>{condominium.name}</strong>
+          <strong></strong>
         </div>
         <div className="cardHomeDescription">
           <p>Informações sobre o condominio:</p>
           <p>
             Cidade:
-            {condominium.city}
+
           </p>
           <p>
             Bairro:
-            {condominium.neighborhood}
+
           </p>
           <p>
             Rua:
-            {condominium.streetName}
+
           </p>
           <p>
             Número:
-            {condominium.streetNumber}
+
           </p>
         </div>
         <div className="cardHomeFooter">

@@ -1,26 +1,35 @@
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import VerificationInput from "react-verification-input";
+import api from "../services/api";
+
 import '../styles/forgetpassword.css';
 
 
 export default function ForgetPassword() {
+  const [tokenSenha, setTokenSenha] = useState(false);
+
+  const [email, setEmail] = useState('');
+  const handleChange = (event) => {
+    const valorInput = event.target.value;
+    setEmail(valorInput);
+  };
+
+  const [tokenNumber, setTokenNumber] = useState('');
+
+  async function handelForget() {
+    try {
+      const response = await api.post('redefinir-senha', {
+        email
+      });
+      setTokenSenha(true);
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  console.log(email)
   return (
     <div className="containerPassword">
-      <div className="forgetPassword">
-        <div className="boxSenha">
-          <div className="text">
-            <strong>Esqueceu sua senha</strong>
-            <span>Digite seu e-mail e enviaremos um link para redefinir sua Senha</span>
-            <label htmlFor="email" className="label-input-forget">Email</label>
-          </div>
-          <input
-            className='inputForget'
-            type="text"
-            placeholder="E-mail"
-            name='email'
-          />
-          <button className="buttonForget"> <Link to="/">Enviar</Link></button>
-        </div>
-      </div>
       <div className="loginLeft">
         <div className="loginLeftContent">
           <h3>
@@ -57,6 +66,48 @@ export default function ForgetPassword() {
               <li>Controle de contas a pagar</li>
             </ul>
           </div>
+        </div>
+      </div>
+      <div className="forgetPassword">
+        <div className="boxSenha">
+          {tokenSenha ?
+            <>
+              <div className="title-token">
+                <strong>Authy Verification</strong>
+                <span>Copy the verification code in your authy application to verify this account recovery</span>
+              </div>
+              <div className="token-input">
+                <VerificationInput
+                  classNames={{
+                    container: "tkn-container",
+                    character: "character",
+                    characterInactive: "character--inactive",
+                    characterSelected: "character--selected",
+                  }}
+                  value={tokenNumber}
+                  onChange={(value) => setTokenNumber(value)}
+                />
+              </div>
+              <button className="buttonForget"> Enviar</button>
+            </>
+            :
+            <>
+              <div className="text">
+                <strong>Esqueceu sua senha</strong>
+                <span>Digite seu e-mail e enviaremos um link para redefinir sua Senha</span>
+                <label htmlFor="email" className="label-input-forget">Email</label>
+              </div>
+              <input
+                className='inputForget'
+                type="text"
+                placeholder="E-mail"
+                name='email'
+                value={email}
+                onChange={(event) => handleChange(event)}
+              />
+              <button className="buttonForget" onClick={() => handelForget()}> Enviar</button>
+            </>
+          }
         </div>
       </div>
     </div>
