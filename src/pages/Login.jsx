@@ -58,12 +58,12 @@ export default function Login() {
             type="password"
             register={register}
           />
-          <Link to="/esqueceusenha">
-            <span className="loginForgot">Esqueceu a senha?</span>
-          </Link>
-          <Link to="/registro">
-            <span className="loginForgot">Novo no APP?</span>
-          </Link>
+          <Link to="/esqueceusenha"><span className="loginForgot">
+            Esqueceu a senha?
+          </span></Link>
+          <Link to="/registro"><span className="loginForgot">
+            Novo no APP?
+          </span></Link>
           <ButtonSample name="Entrar" type="submit" />
         </form>
       </div>

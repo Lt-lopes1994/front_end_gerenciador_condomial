@@ -91,6 +91,7 @@
   transition: 0.3s;
   text-align: center;
   border: 1px solid #ccc;
+  color: #fff;
 }
 
 .contentRight form button:hover {
