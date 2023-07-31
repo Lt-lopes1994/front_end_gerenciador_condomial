@@ -1,9 +1,8 @@
+import jwtDecode from "jwt-decode";
 import React, { useState } from "react";
 import "../../styles/header.css";
 import Drawer from "../Drawer/index.jsx";
-import Avatar from "../Avatar/index.jsx";
 import Menu from "../Menu/index.jsx";
-import jwtDecode from "jwt-decode";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
