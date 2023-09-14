@@ -1,13 +1,38 @@
 import jwtDecode from 'jwt-decode';
+import { useState } from 'react';
 import ImageBook from '../assets/23186847_6736957.svg';
 import ImageDocs from '../assets/33756696_8081373.svg';
 import Header from "../components/Header";
+import api from '../services/api';
 import '../styles/rulesOfProcedure.css';
+// import Form from 'react-bootstrap/Form';
 
 function RulesOfProcedure() {
   const decodedToken = jwtDecode(localStorage.getItem("token"));
-
   var role = decodedToken.role;
+  const [file, setFile] = useState(null)
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(file);
+
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+
+      await api.post("/regimento/upload", formData, {
+        headers: {
+          "content-type": "multipart/form-data"
+        }
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleOnChange = (e) => {
+    setFile(e.target.files[0]);
+  }
 
   return (
     <>
@@ -19,7 +44,20 @@ function RulesOfProcedure() {
           <p className='pTitle'>Aqui você pode ler ou baixar o regimento interno do seu condomínio e
             ficar por dentro das regras.</p>
         </div>
-        {role === "admin" ? <> <label htmlFor="File" className='labelFile'>Enviar Arquivo</label> <input className='input-file' type="file" name="File" id='File' /> </> : <button className='buttonBase'>Download</button>}
+        {
+          role === "admin" ?
+            <form onSubmit={handleSubmit} encType="multipart/form-data">
+              <label htmlFor="File" className='labelFile'>Selecionar Arquivo</label>
+              <input className='input-file' type="file" name="File" id='File' onChange={handleOnChange} />
+              <button type='submit' className='submit-file-btn'>
+                Enviar Arquivo
+              </button>
+            </form>
+            // <> <label htmlFor="File" className='labelFile'>Enviar Arquivo</label> <input className='input-file' type="file" name="File" id='File' onSubmit={handleSubmit} />
+            // </> 
+            :
+            <button className='buttonBase'>Download</button>
+        }
       </section>
 
       <hr />
