@@ -34,6 +34,17 @@ function RulesOfProcedure() {
     setFile(e.target.files[0]);
   }
 
+  const handleDownload = async () => {
+    try {
+      const url = await api.get("/regimento")
+
+
+      window.open(url.data, '_blank');
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <>
       <Header condominiumName={"Residencial Canadá"} />
@@ -56,7 +67,7 @@ function RulesOfProcedure() {
             // <> <label htmlFor="File" className='labelFile'>Enviar Arquivo</label> <input className='input-file' type="file" name="File" id='File' onSubmit={handleSubmit} />
             // </> 
             :
-            <button className='buttonBase'>Download</button>
+            <button className='buttonBase' onClick={handleDownload}>Download</button>
         }
       </section>
 
