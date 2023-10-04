@@ -88,9 +88,14 @@ export default function Bills() {
               </p>
             </div>
             {openBills
-              ? <BillsTable
-                billsList={billsList}
-              />
+              ? <>
+                <BillsTable
+                  billsList={billsList}
+                />
+                <div className="containerChargesCardFooter">
+                  <button className="btnBills" onClick={() => setOpenBills(false)}>Fechar Tabela</button>
+                </div>
+              </>
               : <div className="containerChargesCardFooter">
                 <button className="btnBills" onClick={getBills}>Ver boletos</button>
               </div>
