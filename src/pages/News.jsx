@@ -108,7 +108,17 @@ export default function News() {
               <img src={news.ULRimage} alt={news.alt} />
               <div className="newsContent">
                 <h2>{news.title}</h2>
-                <p>{news.content}</p>
+                <p>
+                  {news.content.length > 150
+                    ? `${news.content.substring(0, 150)}...`
+                    : news.content}
+                  {news.content.length > 150 && (
+                    <span /* onClick={() => openModal(news.content)} */>
+                      {" "}
+                      Ler mais
+                    </span>
+                  )}
+                </p>
                 <p>
                   {role === "admin" ? (
                     <button
