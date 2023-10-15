@@ -27,7 +27,7 @@ export default function Home() {
         </div>
         <section className="containerHomeHero">
           <div className="containerHomeHeroContent">
-            <h1>Residencial Canadá</h1>
+            <h1>{tower}</h1>
             <p>
               Seja bem vindo ao portal do seu condomínio. Confira abaixo as
               principais informações do seu condomínio e da sua torre {tower}!

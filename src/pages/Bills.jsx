@@ -1,10 +1,15 @@
-import Header from "../components/Header/index.jsx";
-import PieChart from "../components/Chart/PieChart.jsx";
+import jwtDecode from 'jwt-decode';
 import { useState } from "react";
+import BillsTable from "../components/BillsTable/index.jsx";
+import PieChart from "../components/Chart/PieChart.jsx";
+import Header from "../components/Header/index.jsx";
 import { delinquecyData } from "../data/delinquencyRates.js";
+import api from "../services/api.js";
 import "../styles/bills.css";
 
 export default function Bills() {
+  const [billsList, setBillsList] = useState([]);
+  const [openBills, setOpenBills] = useState(false);
   const [delinquencyRate, setDelinquencyRate] = useState({
     labels: delinquecyData.map((item) => item.month),
     datasets: [
@@ -53,6 +58,18 @@ export default function Bills() {
     }
   };
 
+  const getBills = async () => {
+    try {
+      const user = jwtDecode(localStorage.getItem('token'));
+      const response = await api.get(`/payment/listar-boletos/${user.id}`);
+
+      setBillsList(response.data.data);
+      setOpenBills(true);
+    } catch (error) {
+      return error
+    }
+  }
+
   return (
     <>
       <div>
@@ -70,9 +87,19 @@ export default function Bills() {
                 do seu condomínio.
               </p>
             </div>
-            <div className="containerChargesCardFooter">
-              <button className="btnBills">Ver boletos</button>
-            </div>
+            {openBills
+              ? <>
+                <BillsTable
+                  billsList={billsList}
+                />
+                <div className="containerChargesCardFooter">
+                  <button className="btnBills" onClick={() => setOpenBills(false)}>Fechar Tabela</button>
+                </div>
+              </>
+              : <div className="containerChargesCardFooter">
+                <button className="btnBills" onClick={getBills}>Ver boletos</button>
+              </div>
+            }
           </div>
           <div className="containerChargesCard">
             <div className="containerChargesCardHeader">

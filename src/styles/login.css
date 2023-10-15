@@ -15,6 +15,8 @@
   width: 40%;
   height: 100vh;
 
+  border-radius: 2.5rem 1rem 2.5rem 0rem;
+
   display: flex;
   justify-content: center;
 
@@ -99,8 +101,6 @@ p {
 .loginRight a:visited {
   color: #1f12d3;
 }
-
-
 
 .loginForm {
   display: flex;

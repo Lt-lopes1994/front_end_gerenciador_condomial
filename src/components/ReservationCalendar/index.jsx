@@ -35,7 +35,6 @@ function ReservationCalendar({
   ];
 
   function handleCommonAreaReservation(commonAreaName) {
-    console.log("chamou a função");
     console.log(commonAreaName);
 
     if (commonAreaName == "Salão de festas") {
@@ -100,6 +99,7 @@ function ReservationCalendar({
       {open && (
         <div className="modalForm">
           <FormReservation
+            commonAreaId={commonAreaName}
             setOpen={setOpen}
             selectedDate={selectedDate}
             setSelectedDate={setSelectedDate}
