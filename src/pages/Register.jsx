@@ -65,7 +65,8 @@ export default function Register() {
         password: data.password,
         passwordConfirm: data.confirmPassword,
         door: data.door,
-        tower: data.tower
+        tower: data.tower,
+        codeCondominium: data.condominumCode
       };
 
       setLoading(true);
@@ -196,6 +197,19 @@ export default function Register() {
                 })}
               />
               {errors.confirmPassword && (
+                <p style={{ color: "red" }} role="alert">
+                  {errors.confirmPassword?.message}
+                </p>
+              )}
+              <input
+                type="text"
+                placeholder="Código identificador do condomínio"
+                {...register("condominumCode", {
+                  required:
+                    "Código identificador do condomínio é um campo obrigátorio"
+                })}
+              />
+              {errors.condominumCode && (
                 <p style={{ color: "red" }} role="alert">
                   {errors.confirmPassword?.message}
                 </p>

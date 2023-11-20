@@ -5,8 +5,15 @@ import { ptBR } from "date-fns/locale";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import "../../styles/formReservation.css";
+import jwtDecode from "jwt-decode";
 
 function FormReservation({ selectedDate, setOpen, commonAreaId }) {
+  const token = localStorage.getItem("token");
+
+  const decoded = jwtDecode(token);
+
+  const { name, email } = decoded;
+
   const {
     register,
     handleSubmit,
@@ -16,7 +23,9 @@ function FormReservation({ selectedDate, setOpen, commonAreaId }) {
     defaultValues: {
       date: selectedDate
         ? format(selectedDate, "dd/MM/yyyy", { locale: ptBR })
-        : ""
+        : "",
+      name: name,
+      email: email
     }
   });
   const [date, setDate] = useState(selectedDate);
@@ -35,6 +44,29 @@ function FormReservation({ selectedDate, setOpen, commonAreaId }) {
 
   return (
     <div className="formReservation">
+      <button
+        onClick={() => setOpen(false)}
+        style={{
+          all: "unset",
+          width: "5rem",
+          height: "5rem",
+          position: "absolute",
+          top: "1rem",
+          right: "2rem",
+          color: "#d22e2e"
+        }}
+      >
+        {" "}
+        X
+      </button>
+      <h1>Reservar</h1>
+      <h4>
+        Preencha os campos abaixo para fazer a sua reserva da área comum{" "}
+        {commonAreaId}
+      </h4>
+      <p style={{ fontFamily: "Roboto", fontSize: "Small" }}>
+        * Campos obrigatórios
+      </p>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
           style={{ textTransform: "capitalize" }}

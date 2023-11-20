@@ -10,11 +10,7 @@ export default function Home() {
 
   const decoded = jwtDecode(token);
 
-  const { name, role, tower, door, email } = decoded;
-
-  const handleClick = () => {
-    console.log("Clicou");
-  };
+  const { name, role, tower, door, email, codeCondominium } = decoded;
 
   return (
     <div className="containerHome">
@@ -23,14 +19,15 @@ export default function Home() {
           <Header />
         </header>
         <div className="containerHomeCards">
-          <CardHome />
+          <CardHome condominiumCode={codeCondominium} />
         </div>
         <section className="containerHomeHero">
           <div className="containerHomeHeroContent">
-            <h1>{tower}</h1>
+            <h1>{tower.toUpperCase()}</h1>
             <p>
               Seja bem vindo ao portal do seu condomínio. Confira abaixo as
-              principais informações do seu condomínio e da sua torre {tower}!
+              principais informações do seu condomínio e da sua torre{" "}
+              {`${tower.slice(0, 1).toUpperCase()}${tower.slice(1)}`}!
             </p>
           </div>
           <div className="containerHomeHeroCard">

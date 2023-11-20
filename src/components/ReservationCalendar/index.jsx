@@ -5,7 +5,6 @@ import "../../styles/modalCalendar.css";
 import "../../styles/reservationCalendar.css";
 import { differenceInCalendarDays, format, set } from "date-fns";
 import FormReservation from "../FormReservation";
-import { ptBR } from "date-fns/locale";
 
 function ReservationCalendar({
   commonAreaName,

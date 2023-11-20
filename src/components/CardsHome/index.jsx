@@ -2,17 +2,19 @@ import React, { useEffect, useState } from "react";
 import "../../styles/cardHome.css";
 import api from "../../services/api";
 
-export default function CardHome() {
+export default function CardHome(condominiumCode) {
   const [condominium, setCondominium] = useState([]);
 
-  async function getCondominium() {
-    const response = await api.get("/condominio");
-    console.log(response.data[0]);
-    setCondominium(response.data[0]);
+  async function getCondominium(condominiumCode) {
+    const response = await api.get(
+      `condominio/code/${condominiumCode.condominiumCode}`
+    );
+
+    setCondominium(response.data);
   }
 
   useEffect(() => {
-    getCondominium();
+    getCondominium(condominiumCode);
   }, []);
 
   return (
@@ -43,16 +45,13 @@ export default function CardHome() {
         <div className="cardHomeFooter">
           <div className="cardHomeFooterContent">
             <div className="cardHomeFooterContentItem">
-              <strong>1</strong>
-              <p>Unidades</p>
+              <strong>6</strong>
+              <p>Visitantes</p>
+              <p style={{ marginTop: "-15px" }}>Cadastrados</p>
             </div>
             <div className="cardHomeFooterContentItem">
-              <strong>1</strong>
-              <p>Visitantes</p>
-            </div>
-            <div className="cardHomeFooterContentItem">
-              <strong>1</strong>
-              <p>Visitantes</p>
+              <strong>2</strong>
+              <p>Encomendas</p>
             </div>
           </div>
         </div>
