@@ -1,14 +1,17 @@
 import jwtDecode from "jwt-decode";
 import { useEffect, useState } from "react";
+import CreateNewsModal from "../components/CreateNewsModal/CreateNewsModal.jsx";
 import Header from "../components/Header/index.jsx";
+import { NewsModal } from "../components/NewsModal/index.jsx";
 import api from "../services/api";
 import "../styles/news.css";
-import CreateNewsModal from "../components/CreateNewsModal/CreateNewsModal.jsx";
 
 export default function News() {
   const [news, setNews] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [editNewsData, setEditNewsData] = useState(null);
+  const [newsReadMoreModalShowl, setNewsReadMoreModalShowl] = useState(false);
+  const [newsModalContent, setNewsModalContent] = useState([]);
 
   async function getNews() {
     try {
@@ -35,6 +38,11 @@ export default function News() {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  const handleOpenNewsReadMoreModal = (content) => {
+    setNewsModalContent(content);
+    setNewsReadMoreModalShowl(true);
   }
 
   // Função para abrir o modal
@@ -101,6 +109,11 @@ export default function News() {
       />
 
       <section className="newsContent">
+        <NewsModal
+          show={newsReadMoreModalShowl}
+          news={newsModalContent}
+          onHide={() => setNewsReadMoreModalShowl(false)}
+        />
         <h1>Notícias</h1>
         <div className="newsCards">
           {news.map((news) => (
@@ -115,7 +128,12 @@ export default function News() {
                   {news.content.length > 150 && (
                     <span /* onClick={() => openModal(news.content)} */>
                       {" "}
-                      Ler mais
+                      <button
+                        className="btnSend"
+                        onClick={() => handleOpenNewsReadMoreModal(news)}
+                      >
+                        Ler mais
+                      </button>
                     </span>
                   )}
                 </p>
