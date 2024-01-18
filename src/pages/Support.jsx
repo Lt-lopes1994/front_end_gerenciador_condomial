@@ -16,7 +16,7 @@ export default function Support() {
         <div className="mainContainer">
             <Header />
             <div className="formContainer">
-                <h1>Registrar suporte</h1>
+                <h1>Abrir chamado</h1>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <input
                         type="text"
@@ -103,7 +103,7 @@ export default function Support() {
                         </span>
                     }
 
-                    <ButtonSample name="Registrar" type="submit" />
+                    <ButtonSample name="Abrir chamado" type="submit" />
                 </form>
             </div>
         </div>
