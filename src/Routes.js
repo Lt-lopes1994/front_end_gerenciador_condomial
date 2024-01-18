@@ -9,6 +9,7 @@ import Profile from './pages/Profile.jsx';
 import Register from './pages/Register.jsx';
 import RoleDistribution from './pages/RoleDistribution.jsx';
 import RulesOfProcedure from './pages/RulesOfProcedure.jsx';
+import Support from './pages/Support.jsx';
 import Test from './pages/Test.jsx';
 import { VisitorsRegister } from './pages/VisitorsRegister.jsx';
 
@@ -32,6 +33,7 @@ export default function MainRoutes() {
       <Route path='/permissoes' element={<RoleDistribution />} />
       <Route path='/minha-conta' element={<Profile />} />
       <Route path='/visitantes' element={<VisitorsRegister />} />
+      <Route path='/suporte' element={<Support />} />
       <Route path='*' element={<h1>Not Found 404</h1>} />
     </Routes>
   );
