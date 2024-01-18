@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/aria-role */
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import "../styles/register.css";
-import { useState } from "react";
 import Alert from "../components/Alert/index.jsx";
 import api from "../services/api";
+import "../styles/register.css";
 
 export default function Register() {
   const [alert, setAlert] = useState(false);
@@ -23,7 +23,7 @@ export default function Register() {
 
   const navigate = useNavigate();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     if (data.password.length < 8) {
       setAlert(true);
       setAlertMessage({
@@ -71,14 +71,15 @@ export default function Register() {
 
       setLoading(true);
 
-      api.post("/users", sendData).then((response) => {
+      await api.post("/users", sendData).then((response) => {
         setLoading(false);
         setConcluded(true);
       });
     } catch (error) {
+      console.log(error.response.data.error);
       setAlert(true);
       setAlertMessage({
-        message: { error },
+        message: error.response.data.error.message,
         severity: "error"
       });
     }
@@ -218,10 +219,8 @@ export default function Register() {
             </form>
             {alert && (
               <Alert
-                top={"63rem"}
-                bottom={"0"}
-                left={"113rem"}
-                right={"20rem"}
+                bottom={"10rem"}
+                right={"47rem"}
                 setOpen={setAlert}
                 open={alert}
                 message={alertMessage.message}

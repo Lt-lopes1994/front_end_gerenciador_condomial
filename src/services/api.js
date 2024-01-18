@@ -11,6 +11,11 @@ const api = axios.create({
 const refreshAccessToken = async () => {
   try {
     const refreshToken = localStorage.getItem('token');
+
+    if (!refreshToken) {
+      return;
+    }
+
     const response = await axios.put('http://localhost:8000/api/v1/token/refresh', {
       oldToken: refreshToken,
     });
