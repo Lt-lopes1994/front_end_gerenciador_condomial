@@ -1,20 +1,22 @@
-import * as React from "react";
-import { useNavigate } from "react-router-dom";
+import AnnouncementIcon from "@mui/icons-material/Announcement";
+import ApartmentIcon from "@mui/icons-material/Apartment";
+import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import GroupsIcon from '@mui/icons-material/Groups';
+import HomeIcon from "@mui/icons-material/Home";
+import MenuOpenIcon from "@mui/icons-material/MenuOpen";
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
-import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
+import Drawer from "@mui/material/Drawer";
+import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
-import ApartmentIcon from "@mui/icons-material/Apartment";
-import AnnouncementIcon from "@mui/icons-material/Announcement";
-import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
-import MenuOpenIcon from "@mui/icons-material/MenuOpen";
-import HomeIcon from "@mui/icons-material/Home";
+import * as React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function TemporaryDrawer() {
   const navigate = useNavigate();
@@ -40,6 +42,14 @@ export default function TemporaryDrawer() {
     }
 
     if (index === 4) {
+      return <GroupsIcon />;
+    }
+
+    if (index === 5) {
+      return <SupportAgentIcon />;
+    }
+
+    if (index === 6) {
       return <HomeIcon />;
     }
   }
@@ -62,6 +72,14 @@ export default function TemporaryDrawer() {
     }
 
     if (index === 4) {
+      navigate("/visitantes");
+    }
+
+    if (index === 5) {
+      navigate("/suporte");
+    }
+
+    if (index === 6) {
       navigate("/home");
     }
   }
@@ -85,7 +103,7 @@ export default function TemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {["Avisos", "Áreas comuns", "Portaria", "Boletos", "Início"].map(
+        {["Avisos", "Áreas comuns", "Portaria", "Boletos", "Visitantes", "Abrir chamado", "Início"].map(
           (text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton onClick={() => handleClick(index)}>
@@ -120,7 +138,7 @@ export default function TemporaryDrawer() {
             <MenuOpenIcon
               sx={{
                 color: "#fff",
-                fontSize: "2.5rem",
+                fontSize: "3.5rem",
                 cursor: "pointer"
               }}
             />

@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import ButtonSample from "../components/Button/button.jsx";
 import Header from "../components/Header/index.jsx";
+import api from "../services/api";
 
 export function VisitorsRegister() {
     const {
@@ -9,14 +10,30 @@ export function VisitorsRegister() {
         watch,
         formState: { errors }
     } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = async (data) => {
+        const { visitor_photo, ...rest } = data;
+        const formData = new FormData();
+
+        formData.append("visitor_photo", data.visitor_photo[0]);
+
+        try {
+            const response = await api.post("/visitors", rest, formData, {
+                headers: {
+                    "Content-Type": `multipart/form-data`,
+                }
+            });
+            console.log(response);
+        } catch (error) {
+            console.log(error.response.data.error);
+        }
+    };
 
     return (
         <div className="mainContainer">
             <Header />
             <div className="formContainer">
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <label htmlFor="cpf" style={{ marginBottom: 0, marginTop: '10px' }}>Cpf do visitante*</label>
+                <form encType="multipart/form-data" onSubmit={handleSubmit(onSubmit)}>
+                    <h1>Cadastro de visitantes</h1>
                     <input
                         type="text"
                         placeholder="Cpf do visitante"
@@ -29,7 +46,6 @@ export function VisitorsRegister() {
                         </span>
                     }
 
-                    <label style={{ marginBottom: 0, marginTop: '10px' }} htmlFor="name">Nome do visitante*</label>
                     <input
                         type="text"
                         name="name"
@@ -42,7 +58,6 @@ export function VisitorsRegister() {
                         </span>
                     }
 
-                    <label style={{ marginBottom: 0, marginTop: '10px' }} htmlFor="visit_reason">Motivo da visita*</label>
                     <input
                         type="text"
                         placeholder="Motivo da visita"
@@ -54,7 +69,6 @@ export function VisitorsRegister() {
                         </span>
                     }
 
-                    <label style={{ marginBottom: 0, marginTop: '10px' }} htmlFor="resident_name">Nome do residente visitado*</label>
                     <input
                         type="text"
                         placeholder="Nome do residente visitado"
@@ -66,7 +80,6 @@ export function VisitorsRegister() {
                         </span>
                     }
 
-                    <label style={{ marginBottom: 0, marginTop: '10px' }} htmlFor="door_visited">Número da residência visitada*</label>
                     <input
                         type="number"
                         placeholder="Número da residência"
@@ -78,7 +91,6 @@ export function VisitorsRegister() {
                         </span>
                     }
 
-                    <label style={{ marginBottom: 0, marginTop: '10px' }} htmlFor="tower_visited">Torre do residente*</label>
                     <input
                         type="text"
                         placeholder="Torre do residente"
@@ -90,7 +102,6 @@ export function VisitorsRegister() {
                         </span>
                     }
 
-                    <label style={{ marginBottom: 0, marginTop: '10px' }} htmlFor="visitor_photo">Foto do visitante</label>
                     <input
                         type="file"
                         placeholder="Foto do visitante"
@@ -102,7 +113,7 @@ export function VisitorsRegister() {
                         </span>
                     }
 
-                    <ButtonSample name="Registrar" type="submit" />
+                    <ButtonSample name="Cadastrar" type="submit" />
                 </form>
             </div>
         </div>
